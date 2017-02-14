@@ -1,0 +1,12 @@
+CACHE MANIFEST
+# v0.15
+
+# runtime
+#js/wne.js #v0.1
+
+# images
+img/background.jpg #v0.1
+
+NETWORK:
+js/wne.js #v0.13
+*

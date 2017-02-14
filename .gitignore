@@ -1,0 +1,7 @@
+*.swp
+*/*.swp
+*/*/*.swp
+*/*/*/*.swp
+
+waple.zip
+log.txt
