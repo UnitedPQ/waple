@@ -1,57 +1,56 @@
-# waple - maplestory (web) client emulator
+# waple - (web) maplestory client emulator
 
 
 ##Planned platform support:
 ---
-### Chrome/Chrome OS 24+ | Firefox 18+ | Safari 7.1+
-### iOS 7.1+ | Android 4.4+
-###### IE support is dropped because of the feature set and Maplestory works on Windows already.
+### Chrome/Chrome OS 25+ | Firefox 18+ | Safari 8+
+### iOS 8+ | Android 4.4+
+###### IE support is dropped because of the feature set
 
 ##Current platform development:
 ---
 ### Chrome
 
 
-### To implement for your own server and/or domain you must create: 
+### To implement for your own server and/or domain you must create (a): 
 #### client
   - keybindings for the emulator
-  - physics
-  - runtime [`read js/rt.js for example`](../blob/github/js/rt.js)
-  - support for Chrome OS, Android, and iOS
+  - physics system
+  - asset system using HTTP GET [in `waple.net`](../blob/github/js/wne.js)
+  - database read/write
 
 #### server
     general web app communication
   - browser `id` generate and refresh (every 10 minutes)
-  - [SSE](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
-    
+  - update active clients of world-state
+  - maplestory asset serving
+
     maplestory server implementation
   - account/character database
   - world environment
-  - maplestory asset serving
 
 
 ### External
-Using `ext.add({ src: classfile_in_directory })` will help you to add features without much work.
+Using `ext.add({ src: file_in_directory })` will help you to add features without much work.
+Operates using [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+    ext.TYPE: []
+    default types
+     'action', 'assets', 'database'
 
-    ext = ...; // class definition
-      // ext.TYPE: []
-      // default types
-      //  'physics'||'p', 'input'||'i', 'runtime'||'rt', 'database'||'db'
-
-      ### Each `add()` creates a Web Worker
-      // .add() @params {
-      //   src: filename
-      // }
-      ### `remove()`
-      // .remove() @params {
-      //   src: filename
-      // }
-      ### `exec()`
-      // .exec() @params {
-      //   _: ext.TYPE
-      //   fn: your_class_function
-      //   params: []
-      // }
+    `add()`
+      ext.add() @params {
+        src: filename
+      }
+    `remove()`
+      ext.remove() @params {
+        src: filename
+      }
+    `exec()`
+      ext.exec() @params {
+        _: ext.TYPE
+        fn: your_class_function
+        params: []
+      }
 
 
 ## waple API
