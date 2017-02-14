@@ -33,6 +33,7 @@
 ### External
 Using `ext.add({ src: file_in_directory })` will help you to add features without much work.
 Operates using [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+
     ext.TYPE: []
     default types
      'action', 'assets', 'database'
